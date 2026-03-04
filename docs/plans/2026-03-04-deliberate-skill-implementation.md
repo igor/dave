@@ -1,10 +1,10 @@
-# `/deliberate` Skill Implementation Plan
+# `/dave` Skill Implementation Plan
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Build the `/deliberate` Claude Code skill — a Facilitator for structured deliberation on open questions, with Explorer subagent, JSONL state, and session-start hook.
+**Goal:** Build the `/dave` Claude Code skill — a Facilitator for structured deliberation on open questions, with Explorer subagent, JSONL state, and session-start hook.
 
-**Architecture:** Layered progressive disclosure. 4 markdown files in `~/.claude/skills/deliberate/` (SKILL.md, METHODS.md, EXPLORER.md, STATE.md) plus a shell script hook at `~/.claude/hooks/deliberation-context.sh`. The skill is pure markdown instruction — no runtime code except the jq-based hook script.
+**Architecture:** Layered progressive disclosure. 4 markdown files in `~/.claude/skills/dave/` (SKILL.md, METHODS.md, EXPLORER.md, STATE.md) plus a shell script hook at `~/.claude/hooks/deliberation-context.sh`. The skill is pure markdown instruction — no runtime code except the jq-based hook script.
 
 **Tech Stack:** Markdown (Claude Code skills), Bash/jq (session-start hook), JSONL (state format)
 
@@ -15,17 +15,17 @@
 **Why first:** Every other component references the event schema. Define it once, reference everywhere.
 
 **Files:**
-- Create: `~/.claude/skills/deliberate/STATE.md`
+- Create: `~/.claude/skills/dave/STATE.md`
 
 **Step 1: Create the skill directory**
 
 ```bash
-mkdir -p ~/.claude/skills/deliberate
+mkdir -p ~/.claude/skills/dave
 ```
 
 **Step 2: Write STATE.md**
 
-Write `~/.claude/skills/deliberate/STATE.md` with the complete JSONL event schema from the design doc (Component 4). Include:
+Write `~/.claude/skills/dave/STATE.md` with the complete JSONL event schema from the design doc (Component 4). Include:
 
 - Common fields section (type, ts, session)
 - All 8 event type tables: question_opened, evidence_added, tension_noted, position_taken, question_reframed, question_crystallized, question_dissolved, facilitator_move
@@ -44,7 +44,7 @@ Read the file back. Confirm all 8 event types are present with correct fields.
 **Step 4: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/skills/deliberate/STATE.md
+cd ~/Github/dg && git add ~/.claude/skills/dave/STATE.md
 git commit -m "feat(skill): add STATE.md — JSONL event schema for deliberation"
 ```
 
@@ -55,11 +55,11 @@ git commit -m "feat(skill): add STATE.md — JSONL event schema for deliberation
 **Why second:** Self-contained component referenced by SKILL.md but not dependent on other skill files.
 
 **Files:**
-- Create: `~/.claude/skills/deliberate/EXPLORER.md`
+- Create: `~/.claude/skills/dave/EXPLORER.md`
 
 **Step 1: Write EXPLORER.md**
 
-Write `~/.claude/skills/deliberate/EXPLORER.md` with the subagent dispatch guidance from the design doc (Component 3). Include:
+Write `~/.claude/skills/dave/EXPLORER.md` with the subagent dispatch guidance from the design doc (Component 3). Include:
 
 - When to dispatch (session start survey, specific thread, tension investigation, parallel dispatch)
 - Source detection logic (kt check via `command -v kt`, cwd always, URLs from user)
@@ -77,7 +77,7 @@ Read the file back. Confirm the prompt template has all three placeholders and t
 **Step 3: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/skills/deliberate/EXPLORER.md
+cd ~/Github/dg && git add ~/.claude/skills/dave/EXPLORER.md
 git commit -m "feat(skill): add EXPLORER.md — subagent dispatch guidance"
 ```
 
@@ -88,11 +88,11 @@ git commit -m "feat(skill): add EXPLORER.md — subagent dispatch guidance"
 **Why third:** The methodological backbone. Must be complete before SKILL.md can reference it.
 
 **Files:**
-- Create: `~/.claude/skills/deliberate/METHODS.md`
+- Create: `~/.claude/skills/dave/METHODS.md`
 
 **Step 1: Write METHODS.md**
 
-Write `~/.claude/skills/deliberate/METHODS.md` with the full epistemic moves palette and calibration system from the design doc (Component 2). Include all four sections:
+Write `~/.claude/skills/dave/METHODS.md` with the full epistemic moves palette and calibration system from the design doc (Component 2). Include all four sections:
 
 **Section 1 — Epistemic Moves** organized by direction:
 - Expansion moves (4): steelmanning, perspective multiplication, absence probe, competing hypotheses
@@ -130,7 +130,7 @@ Read the file back. Confirm:
 **Step 3: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/skills/deliberate/METHODS.md
+cd ~/Github/dg && git add ~/.claude/skills/dave/METHODS.md
 git commit -m "feat(skill): add METHODS.md — epistemic moves palette and calibration"
 ```
 
@@ -141,16 +141,16 @@ git commit -m "feat(skill): add METHODS.md — epistemic moves palette and calib
 **Why fourth:** The main skill file. References all three other files. Must be written last so references are accurate.
 
 **Files:**
-- Create: `~/.claude/skills/deliberate/SKILL.md`
+- Create: `~/.claude/skills/dave/SKILL.md`
 
 **Step 1: Write SKILL.md**
 
-Write `~/.claude/skills/deliberate/SKILL.md` — the Facilitator core. This is the only file with YAML frontmatter.
+Write `~/.claude/skills/dave/SKILL.md` — the Facilitator core. This is the only file with YAML frontmatter.
 
 **Header (exact):**
 ```yaml
 ---
-name: deliberate
+name: dave
 description: >
   Facilitate deliberation on open questions across sessions.
   Use when holding known unknowns, working through strategic questions,
@@ -185,10 +185,10 @@ Target: ~150-200 lines. Every line matters — this is always loaded on invocati
 
 Check that the YAML frontmatter parses correctly:
 ```bash
-head -10 ~/.claude/skills/deliberate/SKILL.md
+head -10 ~/.claude/skills/dave/SKILL.md
 ```
 
-Confirm: name is `deliberate`, description starts with "Facilitate deliberation", `user-invocable: true` is present.
+Confirm: name is `dave`, description starts with "Facilitate deliberation", `user-invocable: true` is present.
 
 **Step 3: Verify file references**
 
@@ -197,7 +197,7 @@ Read SKILL.md and confirm it references STATE.md, METHODS.md, and EXPLORER.md by
 **Step 4: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/skills/deliberate/SKILL.md
+cd ~/Github/dg && git add ~/.claude/skills/dave/SKILL.md
 git commit -m "feat(skill): add SKILL.md — Facilitator core with iron law and process flow"
 ```
 
@@ -374,14 +374,14 @@ git commit -m "feat(config): register deliberation-context.sh in session-start h
 **Step 1: Create a test deliberation directory**
 
 ```bash
-mkdir -p /tmp/test-deliberate/.deliberation
-touch /tmp/test-deliberate/.deliberation/questions.jsonl
+mkdir -p /tmp/test-dave/.deliberation
+touch /tmp/test-dave/.deliberation/questions.jsonl
 ```
 
 **Step 2: Test session-start hook**
 
 ```bash
-echo '{"cwd":"/tmp/test-deliberate"}' | ~/.claude/hooks/deliberation-context.sh
+echo '{"cwd":"/tmp/test-dave"}' | ~/.claude/hooks/deliberation-context.sh
 ```
 
 Expected: No output (empty state).
@@ -390,11 +390,11 @@ Expected: No output (empty state).
 
 In a Claude Code session, verify the skill appears:
 - The description should mention "known unknowns," "strategic questions," "deliberation"
-- Invoking `/deliberate` should load SKILL.md
+- Invoking `/dave` should load SKILL.md
 
 **Step 4: Test first-run experience**
 
-In `/tmp/test-deliberate`, invoke `/deliberate`. Expected behavior:
+In `/tmp/test-dave`, invoke `/dave`. Expected behavior:
 - Facilitator sees empty `.deliberation/questions.jsonl`
 - Asks to open a new question
 - Guides framing
@@ -404,7 +404,7 @@ In `/tmp/test-deliberate`, invoke `/deliberate`. Expected behavior:
 **Step 5: Verify JSONL output**
 
 ```bash
-cat /tmp/test-deliberate/.deliberation/questions.jsonl | jq .
+cat /tmp/test-dave/.deliberation/questions.jsonl | jq .
 ```
 
 Expected: At least one `question_opened` event with valid id, text, context, and ts fields.
@@ -412,7 +412,7 @@ Expected: At least one `question_opened` event with valid id, text, context, and
 **Step 6: Test hook with populated state**
 
 ```bash
-echo '{"cwd":"/tmp/test-deliberate"}' | ~/.claude/hooks/deliberation-context.sh
+echo '{"cwd":"/tmp/test-dave"}' | ~/.claude/hooks/deliberation-context.sh
 ```
 
 Expected: Shows "1 open question" with the question text.
@@ -420,7 +420,7 @@ Expected: Shows "1 open question" with the question text.
 **Step 7: Clean up**
 
 ```bash
-rm -rf /tmp/test-deliberate
+rm -rf /tmp/test-dave
 ```
 
 **Step 8: Final commit**

@@ -1,4 +1,4 @@
-# `/deliberate` Skill Design
+# `/dave` Skill Design
 
 **Date:** 2026-03-04
 **Status:** Approved
@@ -17,7 +17,7 @@
 ## File Structure
 
 ```
-~/.claude/skills/deliberate/
+~/.claude/skills/dave/
 ├── SKILL.md              # Facilitator core: process flow, iron law, rules
 │                         # ~150-200 lines. Always loaded on invocation.
 │
@@ -49,7 +49,7 @@
 
 ```yaml
 ---
-name: deliberate
+name: dave
 description: >
   Facilitate deliberation on open questions across sessions.
   Use when holding known unknowns, working through strategic questions,
@@ -130,7 +130,7 @@ digraph deliberation {
 - **Never auto-crystallize.** Only the human decides when a question is resolved.
 - **Events are append-only.** Never edit or delete existing events in the JSONL.
 - **Explorer returns briefs, not raw content.** Protect the main context window.
-- **Announce at start.** "I'm using the deliberate skill to work on [question/status]." Commitment protocol.
+- **Announce at start.** "I'm using the dave skill to work on [question/status]." Commitment protocol.
 - **One question at a time.** Don't deliberate multiple questions simultaneously in a single session.
 
 ## Component 2: METHODS.md — Epistemic Moves + Calibration
@@ -379,7 +379,7 @@ DELIBERATION: 3 open questions in this directory.
 ```
 
 **Constraints:**
-- Never auto-invokes `/deliberate`
+- Never auto-invokes `/dave`
 - Never loads the full skill
 - Surfaces state, never acts
 - Silent when no `.deliberation/` found

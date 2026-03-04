@@ -4,6 +4,16 @@
 **Status:** Living document
 **Context:** Distilled from the design document and supporting research. These principles are design constraints — every feature decision should be tested against them.
 
+## Name: Dave
+
+The skill is named Dave — a reference to Dave Bowman in Kubrick's *2001: A Space Odyssey*. HAL is the agent that decides it knows better than the humans and resolves the question on its own. Dave is the human who has to think through the situation, hold the uncertainty, and make the call himself. By naming the Facilitator after the human in the story, we encode the core principle into the name: this tool serves the human thinker, not the one that replaces them.
+
+A second lineage runs through Stephenson's *The Diamond Age* and the Young Lady's Illustrated Primer — a device commissioned to teach a child "to think for herself." The Primer adapts to developmental stage and environment, constructs a narrative with the learner as protagonist, and uses a human ractor (remote actor) for the voice. Lord Finkle-McGraw's intent: "a subversive attitude towards the status quo."
+
+Dave shares the Primer's philosophy but operates at a different lifecycle stage. The Primer is pedagogical — it builds capability toward known competencies. Dave is deliberative — it supports a practitioner who already has expertise but needs structured process for the hardest kind of thinking: working through what you don't yet know. Same philosophical lineage, different purpose.
+
+The Primer parallel also illuminates the anti-patterns: premature closure is accepting the status quo of your current thinking. Comfort-seeking is avoiding the subversive question. Dave's job is to cultivate the willingness to challenge your own settled positions.
+
 ## 1. The Human Is the Cognitive Agent
 
 The Facilitator is not an answer engine. The human does the thinking; the agent holds the structure.
