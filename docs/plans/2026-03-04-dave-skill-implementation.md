@@ -449,5 +449,5 @@ Tasks 1-3 can be done in parallel. Task 4 depends on 1-3. Task 6 depends on 5. T
 - **This is a skill, not code.** The "implementation" is writing precise markdown that instructs Claude how to behave. The only actual code is the shell script (Task 5).
 - **Every word in SKILL.md matters.** It's always loaded, so token efficiency is critical. Don't pad with explanations — be direct and structural.
 - **METHODS.md is a palette, not a rulebook.** The moves are examples to draw from, not a checklist to execute. Write them as a reference, not as instructions.
-- **The design doc is the spec.** All content for the skill files comes from `/Users/zeigor/Github/dg/docs/plans/2026-03-04-deliberate-skill-design.md`. Don't invent beyond what's specified.
+- **The design doc is the spec.** All content for the skill files comes from `/Users/zeigor/Github/dg/docs/plans/2026-03-04-dave-skill-design.md`. Don't invent beyond what's specified.
 - **The philosophy docs inform tone, not content.** Read `docs/philosophy/core-principles.md` for the stance, but don't embed the philosophy into the skill files. The principles should be felt, not stated.
