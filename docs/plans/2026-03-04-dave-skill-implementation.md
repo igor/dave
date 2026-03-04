@@ -220,12 +220,12 @@ Write `~/.claude/hooks/deliberation-context.sh`. The script must:
    CWD=$(echo "$INPUT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('cwd',''))" 2>/dev/null)
    ```
 
-2. Walk up directory tree from `$CWD` looking for `.deliberation/questions.jsonl`:
+2. Walk up directory tree from `$CWD` looking for `.dave/questions.jsonl`:
    ```bash
    DIR="$CWD"
    while [ "$DIR" != "/" ]; do
-     if [ -f "$DIR/.deliberation/questions.jsonl" ]; then
-       JSONL="$DIR/.deliberation/questions.jsonl"
+     if [ -f "$DIR/.dave/questions.jsonl" ]; then
+       JSONL="$DIR/.dave/questions.jsonl"
        break
      fi
      DIR=$(dirname "$DIR")
@@ -264,8 +264,8 @@ chmod +x ~/.claude/hooks/deliberation-context.sh
 **Step 2: Test with empty state**
 
 ```bash
-mkdir -p /tmp/test-dave/.deliberation
-touch /tmp/test-dave/.deliberation/questions.jsonl
+mkdir -p /tmp/test-dave/.dave
+touch /tmp/test-dave/.dave/questions.jsonl
 echo '{"cwd":"/tmp/test-dave"}' | ~/.claude/hooks/deliberation-context.sh
 ```
 
@@ -274,7 +274,7 @@ Expected: No output (no open questions).
 **Step 3: Test with sample data**
 
 ```bash
-cat > /tmp/test-dave/.deliberation/questions.jsonl << 'JSONL'
+cat > /tmp/test-dave/.dave/questions.jsonl << 'JSONL'
 {"type":"question_opened","id":"q-1a2b","text":"What is EPA's differentiator?","context":"ep-advisory","ts":"2026-03-01T21:00:00Z"}
 {"type":"evidence_added","question":"q-1a2b","source":"conversation","summary":"Articulation gap is the product","ts":"2026-03-04T10:00:00Z"}
 {"type":"question_opened","id":"q-3c4d","text":"Protocol OS architecture scope","context":"ep-advisory","ts":"2026-02-10T10:00:00Z"}
@@ -374,8 +374,8 @@ git commit -m "feat(config): register deliberation-context.sh in session-start h
 **Step 1: Create a test deliberation directory**
 
 ```bash
-mkdir -p /tmp/test-dave/.deliberation
-touch /tmp/test-dave/.deliberation/questions.jsonl
+mkdir -p /tmp/test-dave/.dave
+touch /tmp/test-dave/.dave/questions.jsonl
 ```
 
 **Step 2: Test session-start hook**
@@ -395,7 +395,7 @@ In a Claude Code session, verify the skill appears:
 **Step 4: Test first-run experience**
 
 In `/tmp/test-dave`, invoke `/dave`. Expected behavior:
-- Facilitator sees empty `.deliberation/questions.jsonl`
+- Facilitator sees empty `.dave/questions.jsonl`
 - Asks to open a new question
 - Guides framing
 - Writes `question_opened` event to JSONL
@@ -404,7 +404,7 @@ In `/tmp/test-dave`, invoke `/dave`. Expected behavior:
 **Step 5: Verify JSONL output**
 
 ```bash
-cat /tmp/test-dave/.deliberation/questions.jsonl | jq .
+cat /tmp/test-dave/.dave/questions.jsonl | jq .
 ```
 
 Expected: At least one `question_opened` event with valid id, text, context, and ts fields.

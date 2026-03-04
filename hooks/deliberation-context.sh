@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # deliberation-context.sh — Session-start hook for deliberation state
-# Walks up from cwd looking for .deliberation/questions.jsonl
+# Walks up from cwd looking for .dave/questions.jsonl
 # Outputs a brief nudge about open questions. Silent when nothing found.
 
 set -euo pipefail
@@ -14,12 +14,12 @@ CWD=$(echo "$INPUT" | python3 -c "import sys,json; print(json.load(sys.stdin).ge
 
 [ -z "$CWD" ] && exit 0
 
-# Walk up directory tree looking for .deliberation/questions.jsonl
+# Walk up directory tree looking for .dave/questions.jsonl
 JSONL=""
 DIR="$CWD"
 while [ "$DIR" != "/" ]; do
-  if [ -f "$DIR/.deliberation/questions.jsonl" ]; then
-    JSONL="$DIR/.deliberation/questions.jsonl"
+  if [ -f "$DIR/.dave/questions.jsonl" ]; then
+    JSONL="$DIR/.dave/questions.jsonl"
     break
   fi
   DIR=$(dirname "$DIR")

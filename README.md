@@ -8,7 +8,7 @@ Most AI tools want to answer your question or execute your task. Dave does neith
 
 ## How It Works
 
-Dave facilitates deliberation through epistemic moves: some widen the space, some compress it toward resolution, some reframe the question entirely. It tracks questions, evidence, tensions, and positions in a persistent event log (`.deliberation/questions.jsonl`), so you can pick up a question after weeks and see exactly where you left off.
+Dave facilitates deliberation through epistemic moves: some widen the space, some compress it toward resolution, some reframe the question entirely. It tracks questions, evidence, tensions, and positions in a persistent event log (`.dave/questions.jsonl`), so you can pick up a question after weeks and see exactly where you left off.
 
 One rule: **the human is the cognitive agent.** Dave holds methodological structure. It never resolves the question for you.
 

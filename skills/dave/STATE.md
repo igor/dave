@@ -1,6 +1,6 @@
 # JSONL Event Schema
 
-Reference for `.deliberation/questions.jsonl` format. Append-only event log.
+Reference for `.dave/questions.jsonl` format. Append-only event log.
 
 ## ID Format
 
@@ -81,12 +81,12 @@ Question IDs: `q-` + 4-char hex (e.g., `q-1a2b`). Generated when a question is o
 
 **Create directory (first run only):**
 ```bash
-mkdir -p .deliberation
+mkdir -p .dave
 ```
 
 **Append events using Bash** (never use the Write tool — it overwrites):
 ```bash
-echo '{"type":"question_opened","id":"q-1a2b","text":"...","context":"...","ts":"2026-03-04T19:00:00Z"}' >> .deliberation/questions.jsonl
+echo '{"type":"question_opened","id":"q-1a2b","text":"...","context":"...","ts":"2026-03-04T19:00:00Z"}' >> .dave/questions.jsonl
 ```
 
 One JSON object per line. Never edit or delete existing lines.

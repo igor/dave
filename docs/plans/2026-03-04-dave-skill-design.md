@@ -63,9 +63,9 @@ user-invocable: true
 
 ```dot
 digraph deliberation {
-    "Read .deliberation/" [shape=box];
+    "Read .dave/" [shape=box];
     "State exists?" [shape=diamond];
-    "Create .deliberation/" [shape=box];
+    "Create .dave/" [shape=box];
     "Synthesize status" [shape=box];
     "Present brief" [shape=box];
     "Revisit or new?" [shape=diamond];
@@ -77,10 +77,10 @@ digraph deliberation {
     "Write events" [shape=box];
     "Close session" [shape=box];
 
-    "Read .deliberation/" -> "State exists?";
+    "Read .dave/" -> "State exists?";
     "State exists?" -> "Synthesize status" [label="yes"];
-    "State exists?" -> "Create .deliberation/" [label="no"];
-    "Create .deliberation/" -> "Guide framing";
+    "State exists?" -> "Create .dave/" [label="no"];
+    "Create .dave/" -> "Guide framing";
     "Synthesize status" -> "Present brief";
     "Present brief" -> "Revisit or new?";
     "Revisit or new?" -> "Load METHODS.md";
@@ -97,7 +97,7 @@ digraph deliberation {
 ```
 
 **Sequence:**
-1. Read `.deliberation/questions.jsonl` (or create `.deliberation/` if absent). Load STATE.md for schema reference.
+1. Read `.dave/questions.jsonl` (or create `.dave/` if absent). Load STATE.md for schema reference.
 2. Synthesize state: open questions, recent activity, stale questions.
 3. Present brief status (synthesized, not listed — no question IDs shown to user).
 4. Ask: revisit an open question, or open a new one?
@@ -268,7 +268,7 @@ not exhaustive detail.
 
 ## Component 4: STATE.md — JSONL Event Schema
 
-Loaded when reading or writing `.deliberation/questions.jsonl`.
+Loaded when reading or writing `.dave/questions.jsonl`.
 
 ### Common Fields (all events)
 
@@ -362,7 +362,7 @@ Separate shell script added to `~/.claude/settings.json` SessionStart hooks arra
 ### Script: `deliberation-context.sh`
 
 **Behavior:**
-1. Walk up directory tree from cwd looking for `.deliberation/questions.jsonl`
+1. Walk up directory tree from cwd looking for `.dave/questions.jsonl`
 2. If not found, exit silently (no output)
 3. If found, use `jq` to parse JSONL and compute:
    - Count of open questions (opened, not crystallized/dissolved)
@@ -382,7 +382,7 @@ DELIBERATION: 3 open questions in this directory.
 - Never auto-invokes `/dave`
 - Never loads the full skill
 - Surfaces state, never acts
-- Silent when no `.deliberation/` found
+- Silent when no `.dave/` found
 
 ### Registration
 

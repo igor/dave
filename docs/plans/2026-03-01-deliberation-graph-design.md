@@ -33,7 +33,7 @@ A deliberation system analogous to workgraph but with different primitives:
 
 ```
 Material layer:  whatever's there (folder of docs, kt namespace, codebase, URLs)
-Question layer:  .deliberation/questions.jsonl — portable, directory-local
+Question layer:  .dave/questions.jsonl — portable, directory-local
 Process layer:   Claude Code skills + Explorer subagent
 ```
 
@@ -60,7 +60,7 @@ The main skill. Guides the practitioner through deliberation. Stays in the main 
 **Invocation:** `/dave` in any directory.
 
 **Flow:**
-1. Reads `.deliberation/questions.jsonl` (or creates `.deliberation/` directory)
+1. Reads `.dave/questions.jsonl` (or creates `.dave/` directory)
 2. If open questions exist: asks whether to revisit one or open new
 3. If new: guides framing — "What are you trying to figure out? What makes this hard?"
 4. Dispatches Explorer subagent(s) to load relevant material
@@ -112,7 +112,7 @@ Current directory → always: Glob + Read patterns
 URLs              → only when user provides them
 ```
 
-### 3. State File (`.deliberation/questions.jsonl`)
+### 3. State File (`.dave/questions.jsonl`)
 
 Append-only, one event per line. Git-friendly, human-readable.
 
@@ -141,7 +141,7 @@ The Facilitator reconstructs current state by replaying events. No separate "cur
 
 ### 4. Session-Start Hook
 
-Lightweight check at session start. Scans for `.deliberation/` in working directory (or walks up directory tree).
+Lightweight check at session start. Scans for `.dave/` in working directory (or walks up directory tree).
 
 If found, reads JSONL and computes:
 - Open questions count
@@ -173,7 +173,7 @@ The single Facilitator may need to split into specialized roles. Candidate roles
 Wait for usage patterns before splitting. The interaction styles are described; whether they need separate agents or work as modes of one agent is an empirical question.
 
 ### Cross-directory deliberation
-Questions that span multiple projects. A question opened in the EP vault that has evidence in the OIO project folder. Current design is directory-local. Cross-directory linking would require either a global index or a convention for referencing other `.deliberation/` stores.
+Questions that span multiple projects. A question opened in the EP vault that has evidence in the OIO project folder. Current design is directory-local. Cross-directory linking would require either a global index or a convention for referencing other `.dave/` stores.
 
 ### kt integration depth
 Should crystallized positions auto-capture as kt nodes? Should kt nodes auto-surface as evidence for open questions? The boundary between knowledge storage (kt) and question management (dave) needs to stay clean, but the handoff points matter.
