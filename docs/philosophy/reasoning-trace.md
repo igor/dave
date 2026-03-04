@@ -15,7 +15,7 @@ Four Perplexity research threads were conducted. Reading them as a corpus rather
 
 ### Thread 1: "Would it be fair to say agentic work is focused on known knowns?"
 
-This established the **positioning**: dg sits in the known-unknowns quadrant. Most agentic tools optimize execution speed for well-defined tasks. dg doesn't make deliberation faster — it makes it possible when capacity is constrained. This reframed the value proposition from "better deliberation tool" to "infrastructure for a cognitive mode that has no tooling."
+This established the **positioning**: dave sits in the known-unknowns quadrant. Most agentic tools optimize execution speed for well-defined tasks. dave doesn't make deliberation faster — it makes it possible when capacity is constrained. This reframed the value proposition from "better deliberation tool" to "infrastructure for a cognitive mode that has no tooling."
 
 ### Thread 2: "How can agentic work guide process when the outcome isn't clear?"
 
@@ -29,7 +29,7 @@ This was the pivotal thread. Five independent intellectual lines converged:
 
 ### Thread 3: "Anyone built Claude Code skills around this?"
 
-This mapped the existing landscape and revealed the gap: no skill combines persistent state + methodological backbone + capacity awareness + engaged interface philosophy. Each existing skill has one or two of these. dg needs all of them.
+This mapped the existing landscape and revealed the gap: no skill combines persistent state + methodological backbone + capacity awareness + engaged interface philosophy. Each existing skill has one or two of these. dave needs all of them.
 
 ### Thread 4: "Coaching diary — analysis methods for agent interactions"
 
@@ -47,7 +47,7 @@ This phrase emerged from the collision of three ideas:
 
 The phrase "the human is the cognitive agent" is not a feature requirement. It's a philosophical position that generates design constraints. Every feature can be tested against it: does this let the user disengage from thinking? If yes, it violates the principle.
 
-This is also what distinguishes dg from every existing skill in the landscape. The Critical Thinking Partner challenges your thinking (reactive). The Futurist Analyst does foresight for you (instrumental). The Facilitator holds the methodological container while you do the thinking (engaged). The distinction is in who holds cognitive agency.
+This is also what distinguishes dave from every existing skill in the landscape. The Critical Thinking Partner challenges your thinking (reactive). The Futurist Analyst does foresight for you (instrumental). The Facilitator holds the methodological container while you do the thinking (engaged). The distinction is in who holds cognitive agency.
 
 ## What the Research Added to the Design
 

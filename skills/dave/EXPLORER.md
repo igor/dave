@@ -14,10 +14,12 @@ Guidance for dispatching Explorer subagents during deliberation sessions.
 Before dispatching, detect what sources are available:
 
 ```
-kt available?     → command -v kt && kt search --query "{topic}" --limit 5
+kt available?     → command -v kt && kt stats --format json
 Current directory  → always available: Glob + Read patterns
 URLs               → only when user provides them in conversation
 ```
+
+When kt is available, use `kt search --query "{topic}" --limit 5` in the Explorer prompt for actual searching.
 
 Build the `detected_sources_with_commands` block from what's present. Only include sources that actually exist.
 

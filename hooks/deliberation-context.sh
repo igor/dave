@@ -54,8 +54,8 @@ STATS=$(jq -rn --argjson seven "$SEVEN_DAYS_AGO" --argjson fourteen "$FOURTEEN_D
   ([$events[] | select(.type == "question_reframed" and .id == $qid) | .new_text] | last) //
   ([$events[] | select(.type == "question_opened" and .id == $qid) | .text] | first) |
   . as $text |
-  # Count recent evidence
-  ([$events[] | select(.question == $qid and .type == "evidence_added") |
+  # Count recent activity (all event types for this question)
+  ([$events[] | select((.question == $qid or .id == $qid) and .type != "question_opened") |
     (.ts | split("T")[0] | strptime("%Y-%m-%d") | mktime) |
     select(. >= $seven)] | length) as $recent_evidence |
   # Last activity timestamp
@@ -75,7 +75,7 @@ else
   "DELIBERATION: \(length) open question\(if length > 1 then "s" else "" end) in this directory.",
   (.[] |
     if .recent_evidence > 0 then
-      "\"\(.text)\" has \(.recent_evidence) new evidence item\(if .recent_evidence > 1 then "s" else "" end) since last week."
+      "\"\(.text)\" has \(.recent_evidence) new event\(if .recent_evidence > 1 then "s" else "" end) since last session."
     elif .stale then
       "\"\(.text)\" is stale (\(.days_inactive) days, no activity)."
     else

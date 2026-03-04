@@ -38,18 +38,17 @@ Copy the `skills/dave/` directory into your Claude Code skills path and the hook
 
 The design draws on five research threads:
 
-- **Linus Lee** on [instrumental vs. engaged interfaces](https://www.youtube.com/watch?v=OeKEXnNP2yA): deliberation is engaged, the process is the value
-- **Collaborative Causal Sensemaking** ([Buçinca et al.](https://arxiv.org/abs/2502.09946)): agents should track the human's evolving world model, not resolve uncertainty on their behalf
-- **Giuseppe Riva** on [cognitive scaffolding](https://doi.org/10.1089/cyber.2023.29296.editorial): frictionless AI induces complacency, thinking tools need calibrated challenge
-- **Ought/Elicit** on [process supervision](https://ought.org/research/process): supervise reasoning processes, not outcomes
-- **GESIS/Nokia Bell Labs** on [agent-assisted foresight](https://arxiv.org/abs/2501.02789): agents expand the search space, humans own the sensemaking
+- **Linus Lee** on [instrumental vs. engaged interfaces](https://www.youtube.com/watch?v=OeKEXnNP2yA): deliberation is engaged, the process is the value ([summary](https://antoinebuteau.com/lessons-from-linus-lee/), [interview](https://jacksondahl.com/dialectic/linus-lee))
+- **Collaborative Causal Sensemaking** ([arxiv](https://arxiv.org/pdf/2512.07801v4.pdf)): agents should track the human's evolving world model, not resolve uncertainty on their behalf
+- **Giuseppe Riva** on [cognitive scaffolding](https://arxiv.org/abs/2507.19483): frictionless AI induces complacency, thinking tools need calibrated challenge
+- **Ought/Elicit** on [process supervision](https://forum.effectivealtruism.org/posts/raFAKyw7ofSo9mRQ3/): supervise reasoning processes, not outcomes ([plan](https://ought.org/updates/2022-04-08-elicit-plan))
+- **GESIS/Nokia Bell Labs** on [agent-assisted foresight](https://arxiv.org/html/2602.08565v1): agents expand the search space, humans own the sensemaking
 
 Full research notes in [`docs/research/landscape.md`](docs/research/landscape.md).
 
 ## Status
 
-Working prototype. Built for one user, one practice. Not packaged, not polished, not generalized. Published because the gap it addresses (no infrastructure for known unknowns) seems worth talking about.
-
+Working prototype. Built for one user, one practice. Not packaged, not polished, not generalized.
 ## License
 
 MIT

@@ -44,7 +44,7 @@ Read the file back. Confirm all 8 event types are present with correct fields.
 **Step 4: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/skills/dave/STATE.md
+cd ~/GitHub/dave && git add ~/.claude/skills/dave/STATE.md
 git commit -m "feat(skill): add STATE.md — JSONL event schema for deliberation"
 ```
 
@@ -77,7 +77,7 @@ Read the file back. Confirm the prompt template has all three placeholders and t
 **Step 3: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/skills/dave/EXPLORER.md
+cd ~/GitHub/dave && git add ~/.claude/skills/dave/EXPLORER.md
 git commit -m "feat(skill): add EXPLORER.md — subagent dispatch guidance"
 ```
 
@@ -130,7 +130,7 @@ Read the file back. Confirm:
 **Step 3: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/skills/dave/METHODS.md
+cd ~/GitHub/dave && git add ~/.claude/skills/dave/METHODS.md
 git commit -m "feat(skill): add METHODS.md — epistemic moves palette and calibration"
 ```
 
@@ -197,7 +197,7 @@ Read SKILL.md and confirm it references STATE.md, METHODS.md, and EXPLORER.md by
 **Step 4: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/skills/dave/SKILL.md
+cd ~/GitHub/dave && git add ~/.claude/skills/dave/SKILL.md
 git commit -m "feat(skill): add SKILL.md — Facilitator core with iron law and process flow"
 ```
 
@@ -264,9 +264,9 @@ chmod +x ~/.claude/hooks/deliberation-context.sh
 **Step 2: Test with empty state**
 
 ```bash
-mkdir -p /tmp/test-dg/.deliberation
-touch /tmp/test-dg/.deliberation/questions.jsonl
-echo '{"cwd":"/tmp/test-dg"}' | ~/.claude/hooks/deliberation-context.sh
+mkdir -p /tmp/test-dave/.deliberation
+touch /tmp/test-dave/.deliberation/questions.jsonl
+echo '{"cwd":"/tmp/test-dave"}' | ~/.claude/hooks/deliberation-context.sh
 ```
 
 Expected: No output (no open questions).
@@ -274,12 +274,12 @@ Expected: No output (no open questions).
 **Step 3: Test with sample data**
 
 ```bash
-cat > /tmp/test-dg/.deliberation/questions.jsonl << 'JSONL'
+cat > /tmp/test-dave/.deliberation/questions.jsonl << 'JSONL'
 {"type":"question_opened","id":"q-1a2b","text":"What is EPA's differentiator?","context":"ep-advisory","ts":"2026-03-01T21:00:00Z"}
 {"type":"evidence_added","question":"q-1a2b","source":"conversation","summary":"Articulation gap is the product","ts":"2026-03-04T10:00:00Z"}
 {"type":"question_opened","id":"q-3c4d","text":"Protocol OS architecture scope","context":"ep-advisory","ts":"2026-02-10T10:00:00Z"}
 JSONL
-echo '{"cwd":"/tmp/test-dg"}' | ~/.claude/hooks/deliberation-context.sh
+echo '{"cwd":"/tmp/test-dave"}' | ~/.claude/hooks/deliberation-context.sh
 ```
 
 Expected output should show 2 open questions, q-1a2b with recent activity, q-3c4d as stale.
@@ -287,13 +287,13 @@ Expected output should show 2 open questions, q-1a2b with recent activity, q-3c4
 **Step 4: Clean up test fixtures**
 
 ```bash
-rm -rf /tmp/test-dg
+rm -rf /tmp/test-dave
 ```
 
 **Step 5: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/hooks/deliberation-context.sh
+cd ~/GitHub/dave && git add ~/.claude/hooks/deliberation-context.sh
 git commit -m "feat(hook): add deliberation-context.sh — session-start JSONL stats"
 ```
 
@@ -361,7 +361,7 @@ Expected: "Valid JSON"
 **Step 4: Commit**
 
 ```bash
-cd ~/Github/dg && git add ~/.claude/settings.json
+cd ~/GitHub/dave && git add ~/.claude/settings.json
 git commit -m "feat(config): register deliberation-context.sh in session-start hooks"
 ```
 
@@ -427,7 +427,7 @@ rm -rf /tmp/test-dave
 
 If any adjustments were needed during smoke testing, commit them:
 ```bash
-cd ~/Github/dg && git add -A && git commit -m "fix: adjustments from smoke testing"
+cd ~/GitHub/dave && git add -A && git commit -m "fix: adjustments from smoke testing"
 ```
 
 ---
@@ -449,5 +449,5 @@ Tasks 1-3 can be done in parallel. Task 4 depends on 1-3. Task 6 depends on 5. T
 - **This is a skill, not code.** The "implementation" is writing precise markdown that instructs Claude how to behave. The only actual code is the shell script (Task 5).
 - **Every word in SKILL.md matters.** It's always loaded, so token efficiency is critical. Don't pad with explanations — be direct and structural.
 - **METHODS.md is a palette, not a rulebook.** The moves are examples to draw from, not a checklist to execute. Write them as a reference, not as instructions.
-- **The design doc is the spec.** All content for the skill files comes from `/Users/zeigor/Github/dg/docs/plans/2026-03-04-dave-skill-design.md`. Don't invent beyond what's specified.
+- **The design doc is the spec.** All content for the skill files comes from `/Users/zeigor/GitHub/dave/docs/plans/2026-03-04-dave-skill-design.md`. Don't invent beyond what's specified.
 - **The philosophy docs inform tone, not content.** Read `docs/philosophy/core-principles.md` for the stance, but don't embed the philosophy into the skill files. The principles should be felt, not stated.

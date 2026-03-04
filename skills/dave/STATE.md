@@ -77,6 +77,20 @@ Question IDs: `q-` + 4-char hex (e.g., `q-1a2b`). Generated when a question is o
 | `move` | string | Move name from METHODS.md vocabulary |
 | `context` | string | What triggered the move and what it targeted |
 
+## Writing Events
+
+**Create directory (first run only):**
+```bash
+mkdir -p .deliberation
+```
+
+**Append events using Bash** (never use the Write tool — it overwrites):
+```bash
+echo '{"type":"question_opened","id":"q-1a2b","text":"...","context":"...","ts":"2026-03-04T19:00:00Z"}' >> .deliberation/questions.jsonl
+```
+
+One JSON object per line. Never edit or delete existing lines.
+
 ## State Reconstruction
 
 Current state is computed by replaying all events in order:

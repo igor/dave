@@ -1,8 +1,8 @@
-# Deliberation Graph (dg) — Design Document
+# Deliberation Graph (dave) — Design Document
 
 **Date:** 2026-03-01
 **Status:** Draft
-**Context:** Emerged from analysis of workgraph (graphwork.github.io) and its relationship to known-unknown knowledge work. Workgraph orchestrates execution of known knowns. dg orchestrates deliberation of known unknowns.
+**Context:** Emerged from analysis of workgraph (graphwork.github.io) and its relationship to known-unknown knowledge work. Workgraph orchestrates execution of known knowns. dave orchestrates deliberation of known unknowns.
 
 ## Problem
 
@@ -19,7 +19,7 @@ Existing tools cover adjacent spaces but miss the active orchestration:
 
 A deliberation system analogous to workgraph but with different primitives:
 
-| Workgraph (known knowns) | dg (known unknowns) |
+| Workgraph (known knowns) | dave (known unknowns) |
 |---|---|
 | **Task** — do X, get result | **Question** — hold X, accumulate understanding |
 | **Dependency** — A before B | **Tension** — A and B pull opposite directions |
@@ -37,7 +37,7 @@ Question layer:  .deliberation/questions.jsonl — portable, directory-local
 Process layer:   Claude Code skills + Explorer subagent
 ```
 
-No dedicated CLI tool. No database. A Claude Code skill (`/deliberate`) with a companion Explorer subagent, plus a session-start hook for active surfacing.
+No dedicated CLI tool. No database. A Claude Code skill (`/dave`) with a companion Explorer subagent, plus a session-start hook for active surfacing.
 
 ### Decision: Why skills, not a CLI tool
 
@@ -47,17 +47,17 @@ Three approaches were evaluated across technical, UX, and maintenance dimensions
 
 **B: Pure Skills + state file** — Lightest. Skills handle all intelligence, thin JSONL file persists state. Closest to how people actually work (invoke in any directory, no context-switching). Fastest to iterate on since skills are markdown files. Chosen approach.
 
-**C: Thin graph + skill agents** — Clean separation of concerns but creates gravitational pull toward explicit question management (`dg add`, `dg list`). The real work happens in conversation with facilitator agents, making the CLI an unused middleman.
+**C: Thin graph + skill agents** — Clean separation of concerns but creates gravitational pull toward explicit question management (`dave add`, `dave list`). The real work happens in conversation with facilitator agents, making the CLI an unused middleman.
 
 **Why B wins:** The decisive factor is question emergence. Questions in the known-unknown space are often not yet articulated — the Facilitator helps you articulate them. A tool that requires "type your question" as the entry point fights the fundamental nature of the work. Skills allow questions to emerge from conversation and get captured, like `/kapture` does for knowledge.
 
 ## Components
 
-### 1. Facilitator Skill (`/deliberate`)
+### 1. Facilitator Skill (`/dave`)
 
 The main skill. Guides the practitioner through deliberation. Stays in the main conversation context.
 
-**Invocation:** `/deliberate` in any directory.
+**Invocation:** `/dave` in any directory.
 
 **Flow:**
 1. Reads `.deliberation/questions.jsonl` (or creates `.deliberation/` directory)
@@ -155,7 +155,7 @@ DELIBERATION: 3 open questions in this directory.
 "EPA differentiator" has 2 new evidence items since last session.
 ```
 
-Does not auto-invoke `/deliberate` — just surfaces state. The practitioner decides whether to engage.
+Does not auto-invoke `/dave` — just surfaces state. The practitioner decides whether to engage.
 
 ## Open Questions / Future Iterations
 
@@ -176,7 +176,7 @@ Wait for usage patterns before splitting. The interaction styles are described; 
 Questions that span multiple projects. A question opened in the EP vault that has evidence in the OIO project folder. Current design is directory-local. Cross-directory linking would require either a global index or a convention for referencing other `.deliberation/` stores.
 
 ### kt integration depth
-Should crystallized positions auto-capture as kt nodes? Should kt nodes auto-surface as evidence for open questions? The boundary between knowledge storage (kt) and question management (dg) needs to stay clean, but the handoff points matter.
+Should crystallized positions auto-capture as kt nodes? Should kt nodes auto-surface as evidence for open questions? The boundary between knowledge storage (kt) and question management (dave) needs to stay clean, but the handoff points matter.
 
 ### Tension detection automation
 Can the session-start hook or Explorer detect tensions automatically — not just count questions? This would require comparing positions across questions, which is a semantic operation. Might use embeddings if the question set is large enough to warrant it.
@@ -190,10 +190,10 @@ Not all evidence is equal. A primary source vs a second-hand summary vs a hunch.
 Rumsfeld Matrix        Tool
 ─────────────────────  ──────────────────────
 Unknown unknowns   →   Signals library, foresight work
-Known unknowns     →   dg (this tool) + kt
+Known unknowns     →   dave (this tool) + kt
 Known knowns       →   workgraph, task management
 ```
 
-dg sits between signals work (surfacing what isn't yet a question) and execution tools (doing what you've decided). It's the infrastructure for the phase where you know there's something to figure out but haven't resolved it yet.
+dave sits between signals work (surfacing what isn't yet a question) and execution tools (doing what you've decided). It's the infrastructure for the phase where you know there's something to figure out but haven't resolved it yet.
 
-EP connection: dg applied to the individual practitioner is EPA's value proposition applied reflexively — "infrastructure for organizations that need help knowing what they want" becomes "infrastructure for practitioners who need help knowing what they think."
+EP connection: dave applied to the individual practitioner is EPA's value proposition applied reflexively — "infrastructure for organizations that need help knowing what they want" becomes "infrastructure for practitioners who need help knowing what they think."

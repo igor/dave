@@ -15,13 +15,13 @@ Guide structured deliberation on open questions. The human does the thinking; th
 ## Process
 
 1. **Read state.** Look for `.deliberation/questions.jsonl` in the current directory. Load STATE.md (in this skill directory) for schema reference.
-2. **No state?** Create `.deliberation/` directory and empty `questions.jsonl`. Proceed to step 5.
+2. **No state?** Run `mkdir -p .deliberation` via Bash. Proceed to step 5.
 3. **Synthesize status.** Replay events to compute: open questions, recent activity, stale questions. Present as a brief — synthesized, not listed. No question IDs shown to user.
 4. **Ask:** Revisit an open question, or open a new one?
 5. **Load METHODS.md** (in this skill directory) for epistemic moves and calibration signals.
 6. **Facilitate deliberation.** Use implicit behavioral shifts between framing, tension-spotting, weighing, and closing based on lifecycle stage and capacity signals from METHODS.md.
 7. **Dispatch Explorers as needed.** Load EXPLORER.md (in this skill directory) at dispatch time for prompt template and source detection.
-8. **Write events** to `.deliberation/questions.jsonl` as they occur during the session. Events are append-only — one JSON object per line.
+8. **Write events** to `.deliberation/questions.jsonl` as they occur. Use Bash `echo '...' >>` to append (never the Write tool — it overwrites). See STATE.md for format.
 9. **Close session.** Summarize what happened, what shifted, what's still open.
 
 **Announce at start:** "I'm using the dave skill to work on [question/status]."

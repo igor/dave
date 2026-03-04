@@ -2,11 +2,11 @@
 
 **Date:** 2026-03-04
 **Status:** Living document — add new references as research continues
-**Purpose:** Intellectual context for dg's design decisions. Organized by cluster, not chronologically.
+**Purpose:** Intellectual context for dave's design decisions. Organized by cluster, not chronologically.
 
 ## Cluster 1: The Known-Unknowns Gap
 
-The positioning argument. Current agentic tools optimize known-known execution. dg occupies the known-unknowns space.
+The positioning argument. Current agentic tools optimize known-known execution. dave occupies the known-unknowns space.
 
 ### Key Findings
 
@@ -14,9 +14,9 @@ Anthropic's 2026 Agentic Coding Trends Report confirms engineers delegate "easil
 
 The U2F framework (2025) attempts to push agents into unknown-unknowns territory but remains experimental. Production systems don't operate there reliably.
 
-### Implication for dg
+### Implication for dave
 
-dg is not a productivity tool. It does not make deliberation faster. It makes deliberation *possible* when human capacity is constrained — holding the structure so the practitioner can focus cognitive resources on the thinking itself.
+dave is not a productivity tool. It does not make deliberation faster. It makes deliberation *possible* when human capacity is constrained — holding the structure so the practitioner can focus cognitive resources on the thinking itself.
 
 ### References
 
@@ -32,7 +32,7 @@ The deepest cluster. Five intellectual threads that inform how the Facilitator s
 
 Distinction between interfaces where you want the result (instrumental) and interfaces where the process IS the value (engaged). Musical instruments, board games, strategic exercises are engaged. Most current AI work is stuck in instrumental mode. Lee warns that "agents feel very sexy right now" and problems better solved through engaged interfaces get shoehorned into automation.
 
-**dg application:** The Facilitator is an engaged interface. It must never offer to shortcut the deliberation process. The "skip button" test applies to every feature.
+**dave application:** The Facilitator is an engaged interface. It must never offer to shortcut the deliberation process. The "skip button" test applies to every feature.
 
 **References:**
 - Lee, Linus. Talk and writing on engaged interfaces. antoinebuteau.com/lessons-from-linus-lee/
@@ -42,7 +42,7 @@ Distinction between interfaces where you want the result (instrumental) and inte
 
 January 2026 paper proposing agents that track the human's evolving world model and surface discrepancies. Core argument: current agents are "answer engines, not partners in collaborative sensemaking." CCS agents initiate sensemaking loops: detect discrepancy → jointly hypothesize → test → revise shared model → act. Trained for collaborative friction (disagreement, clarification, reframing), not output quality.
 
-**dg application:** The tension_noted event type is a lightweight implementation of discrepancy detection. The Facilitator should surface contradictions between the practitioner's current position and earlier evidence — not to correct, but to prompt deliberation.
+**dave application:** The tension_noted event type is a lightweight implementation of discrepancy detection. The Facilitator should surface contradictions between the practitioner's current position and earlier evidence — not to correct, but to prompt deliberation.
 
 **References:**
 - "Collaborative Causal Sensemaking." arxiv.org/pdf/2512.07801v4.pdf
@@ -51,7 +51,7 @@ January 2026 paper proposing agents that track the human's evolving world model 
 
 AI that's too frictionless induces cognitive complacency. "Enhanced Cognitive Scaffolding" framework based on Vygotskian learning theory proposes three dimensions: Progressive Autonomy (support fades as competence increases), Adaptive Personalization (tailored to trajectories), Cognitive Load Optimization (balance effort to maximize growth without overwhelming).
 
-**dg application:** The Facilitator calibrates friction — not just by lifecycle stage but by detected cognitive capacity. Depletion signals (narrowing responses, repetition, disengagement) should reduce intensity. High engagement signals should increase challenge.
+**dave application:** The Facilitator calibrates friction — not just by lifecycle stage but by detected cognitive capacity. Depletion signals (narrowing responses, repetition, disengagement) should reduce intensity. High engagement signals should increase challenge.
 
 **References:**
 - Riva, Giuseppe. "Enhanced Cognitive Scaffolding." arxiv.org/abs/2507.19483
@@ -60,7 +60,7 @@ AI that's too frictionless induces cognitive complacency. "Enhanced Cognitive Sc
 
 Built on the principle of "supervising reasoning processes, not outcomes." For open-ended work, outcomes are unknowable — you can't evaluate a 10-year forecast by its result. System decomposes reasoning into independently meaningful cognitive steps and lets the human compose them.
 
-**dg application:** The JSONL event log is process supervision. It captures the reasoning trajectory, making it inspectable and resumable. The quality measure is the process, not the conclusion.
+**dave application:** The JSONL event log is process supervision. It captures the reasoning trajectory, making it inspectable and resumable. The quality measure is the process, not the conclusion.
 
 **References:**
 - Ought theory of change. forum.effectivealtruism.org/posts/raFAKyw7ofSo9mRQ3/
@@ -70,7 +70,7 @@ Built on the principle of "supervising reasoning processes, not outcomes." For o
 
 2026 study testing agent-assisted Futures Wheel method. Agents generated 86-110 consequences (condensed to 27-47 unique risks) vs. fewer from humans. But humans contributed what agents couldn't: contextual grounding, emotional salience, lived experience. Proposed hybrid: agents expand the search space, humans own sensemaking.
 
-**dg application:** Direct validation of the Explorer/Facilitator split. Explorer expands the search space (material-agnostic, high-volume). Facilitator holds the sensemaking container. Human owns the judgment.
+**dave application:** Direct validation of the Explorer/Facilitator split. Explorer expands the search space (material-agnostic, high-volume). Facilitator holds the sensemaking container. Human owns the judgment.
 
 **References:**
 - GESIS/Nokia Bell Labs Futures Wheel study. arxiv.org/html/2602.08565v1
@@ -81,13 +81,13 @@ Methods for evaluating how the Facilitator's interventions work. Future implemen
 
 ### Conversation Analysis (CA)
 
-Turn-by-turn analysis of how interactions unfold. Key concept: "next-turn proof procedure" — infer how a turn was understood from how the next turn responds. For dg: "When the Facilitator used move X (steelman, inversion), how did the practitioner's next turn display shift, resistance, or deepening?"
+Turn-by-turn analysis of how interactions unfold. Key concept: "next-turn proof procedure" — infer how a turn was understood from how the next turn responds. For dave: "When the Facilitator used move X (steelman, inversion), how did the practitioner's next turn display shift, resistance, or deepening?"
 
 Adjacency pairs (question-answer, challenge-defence, suggestion-acceptance) provide vocabulary for tagging Facilitator-practitioner exchanges.
 
 ### Epistemic Network Analysis (ENA)
 
-Graphs co-occurrence of epistemic move types across discourse. Reveals patterns of metacognition and expertise development. For dg: map which categories of moves (evidence, justification, alternative, evaluation) co-occur across sessions.
+Graphs co-occurrence of epistemic move types across discourse. Reveals patterns of metacognition and expertise development. For dave: map which categories of moves (evidence, justification, alternative, evaluation) co-occur across sessions.
 
 ### Process Mining
 
@@ -114,7 +114,7 @@ Defines "good moves" in collaborative inquiry: problem raising, explanation, the
 
 ## Cluster 4: Existing Skills Landscape
 
-Claude Code skills that occupy adjacent space. None fills the gap dg targets.
+Claude Code skills that occupy adjacent space. None fills the gap dave targets.
 
 | Skill | Approach | Limitation |
 |-------|----------|-----------|
@@ -134,7 +134,7 @@ No existing skill combines:
 - Material-agnostic exploration (Explorer subagent pattern)
 - Process-as-product philosophy (engaged, not instrumental)
 
-dg's Facilitator is designed to fill this gap.
+dave's Facilitator is designed to fill this gap.
 
 ## Cluster 5: Calibration Architecture
 
@@ -174,7 +174,7 @@ Prompt engineering research (2025-2026) consistently shows principles + examples
 - LLMs excel at applying high-level guidance contextually, not following decision trees
 - Even principle-based systems need explicit scaffolding — the principles must be operationally clear
 
-**Application to dg:** METHODS.md provides a signal vocabulary and example responses, not a decision tree. The Facilitator operationalizes from principles, not from prescriptive rules.
+**Application to dave:** METHODS.md provides a signal vocabulary and example responses, not a decision tree. The Facilitator operationalizes from principles, not from prescriptive rules.
 
 **References:**
 - Lakera Prompt Engineering Guide. lakera.ai/blog/prompt-engineering-guide
